@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+
+def food
+  name = ''
+  response = RestClient.get "https://api.edamam.com/api/food-database/v2/parser?ingr=#{name}&category=generic-foods&app_id=592a7717&app_key=c4d981b34b013776df8cbbb041f03279"
+  json = JSON.parse response
+
+  if !json.nil? || !json.empty?
+    json["parsed"].map do |food|
+      Food.create!(name: "#{food[:label]}", group: "#{food[:category]}", calories: "#{food[:nutrients][:ENERC_KCAL].to_int}", image: "#{food[:image]}")
+      puts "Food added - NAME: #{food[:label]}, GROUP: #{food[:category]}, CALORIES: #{food[:nutrients][:ENERC_KCAL].to_int}, IMAGE: #{food[:image]}"
+    end
+  else
+    puts "error seeding foods"
+  end
+end
