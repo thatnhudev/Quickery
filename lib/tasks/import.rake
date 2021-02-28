@@ -3,8 +3,7 @@ require 'roo'
 namespace :import do
   desc "Import data from Basic Grocery Items List"
   task data: :environment do
-    puts "Importing Data"
-
+    puts "Importing Data from Spreadsheet"
     data = Roo::Spreadsheet.open('app/assets/BasicGroceryItems.xlsx')
     headers = data.row(1)
 
