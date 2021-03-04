@@ -1,5 +1,5 @@
 def list_10_foods
-  foods = Food.pluck(:calories)
+  foods = Food.pluck(:nutrition)
   foods[0..9].each do |food|
     puts "food: #{food.inspect}"
   end
@@ -26,6 +26,8 @@ def all_food_names
     end
   # end
 end
+
+
 
 # check_json_response
 list_10_foods
