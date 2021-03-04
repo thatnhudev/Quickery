@@ -32,7 +32,7 @@ class Api::V1::FoodsController < ApplicationController
     params.permit(:name, :image, :group, :type, :nutrition, :calories)
   end
 
- def food
-   @food ||= Food.find(params[:id])
- end
+  def food
+    @food ||= Food.find(params[:id])
+  end
 end
