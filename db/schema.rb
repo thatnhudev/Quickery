@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_040203) do
     t.text "nutrition"
     t.integer "calories"
     t.text "category"
-    t.string "image", default: "https://ibb.co/D4yfzXy"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

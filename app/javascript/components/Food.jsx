@@ -38,16 +38,15 @@ class Food extends React.Component {
   render() {
     const { food } = this.state;
     let nutrientList = "No nutrients available";
-
-    // if (food.nutrition.length > 0) {
-    //   nutritionList = food.nutrition
-    //     .split(",")
-    //     .map((nutrition, index) => (
-    //       <li key={index} className="list-group-item">
-    //         {nutrition}
-    //       </li>
-    //     ));
-    // }
+    if (food.nutrition.length > 0) {
+      nutrientList = food.nutrition
+        .split(",")
+        .map((nutrition, index) => (
+          <li key={index} className="list-group-item">
+            {nutrition}
+          </li>
+        ));
+    }
     const calories = this.addHtmlEntities(food.calories);
 
     return (
@@ -58,7 +57,7 @@ class Food extends React.Component {
             alt={`${food.name} image`}
             className="img-fluid position-absolute"
           />
-          <div className="overlay bg-dark position-absolute" />
+          <div className="overlay bg-dark position-absolute"/>
           <h1 className="display-4 position-relative text-white">
             {food.name}
           </h1>
@@ -68,7 +67,7 @@ class Food extends React.Component {
             <div className="col-sm-12 col-lg-3">
               <ul className="list-group">
                 <h5 className="mb-2">Nutrition</h5>
-                {food.nutrition}
+                {nutrientList}
               </ul>
             </div>
             <div className="col-sm-12 col-lg-7">

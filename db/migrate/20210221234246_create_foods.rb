@@ -4,9 +4,9 @@ class CreateFoods < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.string :group, null: false
       t.text :nutrition
-      t.integer :calories, null: false
-      t.text :type
-      t.string :image, default: 'https://ibb.co/D4yfzXy'
+      t.integer :calories
+      t.text :category
+      t.string :image
 
       t.timestamps
     end
